@@ -11,47 +11,131 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text("Flexible Layout"),
+          title: Text("Latihan Stack dan Align"),
         ),
-        body: Column(
+        body: Stack(
           children: [
-            Flexible(
-              flex: 1,
-              child: Row(
-                children: [
-                  Flexible(
-                      flex: 1,
-                      child: Container(
-                        margin: EdgeInsets.all(5),
-                        color: Colors.red,
-                      )),
-                  Flexible(
-                      flex: 1,
-                      child: Container(
-                        margin: EdgeInsets.all(5),
-                        color: Colors.green,
-                      )),
-                  Flexible(
-                      flex: 1,
-                      child: Container(
-                        margin: EdgeInsets.all(5),
-                        color: Colors.purple,
-                      )),
-                ],
-              ),
+            Column(
+              children: [
+                Flexible(
+                  flex: 1,
+                  child: Row(
+                    children: [
+                      Flexible(
+                        flex: 1,
+                        child: Container(
+                          color: Colors.white,
+                        ),
+                      ),
+                      Flexible(
+                        flex: 1,
+                        child: Container(
+                          color: Colors.black12,
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+                Flexible(
+                  flex: 1,
+                  child: Row(
+                    children: [
+                      Flexible(
+                        flex: 1,
+                        child: Container(
+                          color: Colors.black12,
+                        ),
+                      ),
+                      Flexible(
+                        flex: 1,
+                        child: Container(
+                          color: Colors.white,
+                        ),
+                      )
+                    ],
+                  ),
+                )
+              ],
             ),
-            Flexible(
-                flex: 2,
-                child: Container(
-                  margin: EdgeInsets.all(5),
-                  color: Colors.amber,
-                )),
-            Flexible(
-                flex: 1,
-                child: Container(
-                  margin: EdgeInsets.all(5),
-                  color: Colors.blue,
-                )),
+            ListView(
+              children: [
+                Column(
+                  children: [
+                    Container(
+                      margin: EdgeInsets.all(10),
+                      child: Text(
+                        "Ini adalah text yang ada di lapingan tengah dari stack",
+                        style: TextStyle(fontSize: 30),
+                      ),
+                    ),
+                    Container(
+                      margin: EdgeInsets.all(10),
+                      child: Text(
+                        "Ini adalah text yang ada di lapingan tengah dari stack",
+                        style: TextStyle(fontSize: 30),
+                      ),
+                    ),
+                    Container(
+                      margin: EdgeInsets.all(10),
+                      child: Text(
+                        "Ini adalah text yang ada di lapingan tengah dari stack",
+                        style: TextStyle(fontSize: 30),
+                      ),
+                    ),
+                    Container(
+                      margin: EdgeInsets.all(10),
+                      child: Text(
+                        "Ini adalah text yang ada di lapingan tengah dari stack",
+                        style: TextStyle(fontSize: 30),
+                      ),
+                    ),
+                    Container(
+                      margin: EdgeInsets.all(10),
+                      child: Text(
+                        "Ini adalah text yang ada di lapingan tengah dari stack",
+                        style: TextStyle(fontSize: 30),
+                      ),
+                    ),
+                    Container(
+                      margin: EdgeInsets.all(10),
+                      child: Text(
+                        "Ini adalah text yang ada di lapingan tengah dari stack",
+                        style: TextStyle(fontSize: 30),
+                      ),
+                    ),
+                    Container(
+                      margin: EdgeInsets.all(10),
+                      child: Text(
+                        "Ini adalah text yang ada di lapingan tengah dari stack",
+                        style: TextStyle(fontSize: 30),
+                      ),
+                    ),
+                    Container(
+                      margin: EdgeInsets.all(10),
+                      child: Text(
+                        "Ini adalah text yang ada di lapingan tengah dari stack",
+                        style: TextStyle(fontSize: 30),
+                      ),
+                    ),
+                    Container(
+                      margin: EdgeInsets.all(10),
+                      child: Text(
+                        "Ini adalah text yang ada di lapingan tengah dari stack",
+                        style: TextStyle(fontSize: 30),
+                      ),
+                    ),
+                  ],
+                )
+              ],
+            ),
+            Align(
+              alignment: Alignment(0, 0.75),
+              child: RaisedButton(
+                child: Text("My Button"),
+                color: Colors.amber,
+                onPressed: () {},
+              ),
+            )
           ],
         ),
       ),

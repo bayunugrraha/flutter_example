@@ -6,27 +6,47 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        appBar: PreferredSize(
-          preferredSize: Size.fromHeight(200),
-          child: AppBar(
-            backgroundColor: Colors.amber,
-            flexibleSpace: Positioned(
-              bottom: 0,
-              right: 0,
-              child: Container(
-                margin: EdgeInsets.all(20),
-                child: Text("Appbar with Custom Height",
-                    style: TextStyle(
-                        fontSize: 20,
-                        color: Colors.white,
-                        fontWeight: FontWeight.w700)),
+        home: DefaultTabController(
+            length: 4,
+            child: Scaffold(
+              appBar: AppBar(
+                title: Text("Contoh Tab Bar"),
+                bottom: TabBar(
+                  tabs: [
+                    Tab(
+                      icon: Icon(Icons.comment),
+                      text: "Comments",
+                    ),
+                    Tab(
+                      child: Image(
+                        image: AssetImage("assets/images/instagram.png"),
+                      ),
+                    ),
+                    Tab(
+                      icon: Icon(Icons.computer),
+                    ),
+                    Tab(
+                      text: "News",
+                    )
+                  ],
+                ),
               ),
-            ),
-          ),
-        ),
-      ),
-    );
+              body: TabBarView(
+                children: [
+                  Center(
+                    child: Text("Tab 1"),
+                  ),
+                  Center(
+                    child: Text("Tab 2"),
+                  ),
+                  Center(
+                    child: Text("Tab 3"),
+                  ),
+                  Center(
+                    child: Text("Tab 4"),
+                  ),
+                ],
+              ),
+            )));
   }
 }

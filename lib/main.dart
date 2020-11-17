@@ -5,32 +5,32 @@ void main() => runApp(MyApp());
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    TabBar myTabBar = TabBar(
+      indicator: BoxDecoration(
+          color: Colors.red,
+          border: Border(top: BorderSide(color: Colors.purple, width: 5))),
+      tabs: [
+        Tab(
+          icon: Icon(Icons.comment),
+          text: "Comments",
+        ),
+        Tab(
+          icon: Icon(Icons.computer),
+          text: "Computers",
+        ),
+      ],
+    );
+
     return MaterialApp(
         home: DefaultTabController(
-            length: 4,
+            length: 2,
             child: Scaffold(
               appBar: AppBar(
-                title: Text("Contoh Tab Bar"),
-                bottom: TabBar(
-                  tabs: [
-                    Tab(
-                      icon: Icon(Icons.comment),
-                      text: "Comments",
-                    ),
-                    Tab(
-                      child: Image(
-                        image: AssetImage("assets/images/instagram.png"),
-                      ),
-                    ),
-                    Tab(
-                      icon: Icon(Icons.computer),
-                    ),
-                    Tab(
-                      text: "News",
-                    )
-                  ],
-                ),
-              ),
+                  title: Text("Contoh Tab Bar"),
+                  bottom: PreferredSize(
+                      preferredSize:
+                          Size.fromHeight(myTabBar.preferredSize.height),
+                      child: Container(color: Colors.amber, child: myTabBar))),
               body: TabBarView(
                 children: [
                   Center(
@@ -38,12 +38,6 @@ class MyApp extends StatelessWidget {
                   ),
                   Center(
                     child: Text("Tab 2"),
-                  ),
-                  Center(
-                    child: Text("Tab 3"),
-                  ),
-                  Center(
-                    child: Text("Tab 4"),
                   ),
                 ],
               ),

@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 
 void main() {
@@ -12,55 +10,36 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text("Flutter Typography"),
+          title: Text("Custom Clipper"),
         ),
         body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              Text(
-                "Contoh 01 (Tanpa apapun)",
-                style: TextStyle(fontSize: 20),
-              ),
-              Text(
-                "Contoh 02 (Small Caps)",
-                style: TextStyle(
-                    fontSize: 20, fontFeatures: [FontFeature.enable('smcp')]),
-              ),
-              Text(
-                "Contoh 03 1/2 (Small Caps & frac)",
-                style: TextStyle(fontSize: 20, fontFeatures: [
-                  FontFeature.enable('smcp'),
-                  FontFeature.enable('frac')
-                ]),
-              ),
-              Text(
-                "Contoh 09 (Poppins)",
-                style: TextStyle(
-                    fontSize: 20, fontFamily: "Poppins", fontFeatures: []),
-              ),
-              Text(
-                "Contoh 09 (Poppins old)",
-                style: TextStyle(
-                    fontSize: 20,
-                    fontFamily: "Poppins",
-                    fontFeatures: [FontFeature.oldstyleFigures()]),
-              ),
-              Text(
-                "Contoh poppins (default)",
-                style: TextStyle(fontSize: 20, fontFamily: "Poppins"),
-              ),
-              Text(
-                "Contoh poppins (style set)",
-                style: TextStyle(
-                    fontSize: 20,
-                    fontFamily: "Poppins",
-                    fontFeatures: [FontFeature.stylisticSet(5)]),
-              ),
-            ],
+          child: ClipPath(
+            clipper: MyClipper(),
+            child: Image(
+              width: 300,
+              image: AssetImage("assets/Bayu.jpg"),
+            ),
           ),
         ),
       ),
     );
   }
+}
+
+class MyClipper extends CustomClipper<Path> {
+  @override
+  Path getClip(Size size) {
+    Path path = Path();
+
+    path.lineTo(0, size.height);
+    path.quadraticBezierTo(
+        size.width / 2, size.height * 0.75, size.width, size.height);
+    path.lineTo(size.width, 0);
+    path.close();
+
+    return null;
+  }
+
+  @override
+  bool shouldReclip(covariant CustomClipper<Path> oldClipper) => false;
 }

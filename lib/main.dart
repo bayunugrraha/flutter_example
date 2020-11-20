@@ -1,45 +1,49 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_example/post_result_model.dart';
 
-void main() {
-  runApp(MyApp());
+void main() => runApp(MyApp());
+
+class MyApp extends StatefulWidget {
+  @override
+  _MyAppState createState() => _MyAppState();
 }
 
-class MyApp extends StatelessWidget {
+class _MyAppState extends State<MyApp> {
+  PostResult postResult = null;
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text("Custom Clipper"),
+          title: Text("API Demo"),
         ),
         body: Center(
-          child: ClipPath(
-            clipper: MyClipper(),
-            child: Image(
-              width: 300,
-              image: AssetImage("assets/Bayu.jpg"),
-            ),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              Text((postResult != null)
+                  ? postResult.id +
+                      " | " +
+                      postResult.name +
+                      " | " +
+                      postResult.job +
+                      " | " +
+                      postResult.created
+                  : "Tidak ada data"),
+              RaisedButton(
+                onPressed: () {
+                  PostResult.connectToAPI("Bayu", "Mahasiswa").then((value) {
+                    postResult = value;
+                    setState(() {});
+                  });
+                },
+                child: Text("POST"),
+              )
+            ],
           ),
         ),
       ),
     );
   }
-}
-
-class MyClipper extends CustomClipper<Path> {
-  @override
-  Path getClip(Size size) {
-    Path path = Path();
-
-    path.lineTo(0, size.height);
-    path.quadraticBezierTo(
-        size.width / 2, size.height * 0.75, size.width, size.height);
-    path.lineTo(size.width, 0);
-    path.close();
-
-    return null;
-  }
-
-  @override
-  bool shouldReclip(covariant CustomClipper<Path> oldClipper) => false;
 }
